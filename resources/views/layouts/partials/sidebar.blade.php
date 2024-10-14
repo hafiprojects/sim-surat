@@ -21,114 +21,118 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
+                @php
+                    $menus = [
+                        (object) [
+                            'title' => 'MENU UTAMA',
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-tachometer-alt',
+                            'name' => 'Dashboard',
+                            'link' => '/dashboard',
+                            'childs' => [],
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-list',
+                            'name' => 'Jenis Surat',
+                            'link' => '/jenis-surat',
+                            'childs' => [],
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-user',
+                            'name' => 'Pengguna',
+                            'link' => '/pengguna',
+                            'childs' => [],
+                        ],
+                        (object) [
+                            'title' => 'DOKUMEN SURAT',
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-book',
+                            'name' => 'Sekretariat',
+                            'childs' => [
+                                (object) [
+                                    'name' => 'Surat Masuk',
+                                    'link' => '/sekretariat/surat-masuk',
+                                ],
+                                (object) [
+                                    'name' => 'Surat Keluar',
+                                    'link' => '/sekretariat/surat-keluar',
+                                ],
+                            ],
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-book',
+                            'name' => 'Bidang PP',
+                            'childs' => [
+                                (object) [
+                                    'name' => 'Surat Masuk',
+                                    'link' => '/pp/surat-masuk',
+                                ],
+                                (object) [
+                                    'name' => 'Surat Keluar',
+                                    'link' => '/pp/surat-keluar',
+                                ],
+                            ],
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-book',
+                            'name' => 'Bidang Olahraga',
+                            'childs' => [
+                                (object) [
+                                    'name' => 'Surat Masuk',
+                                    'link' => '/olahraga/surat-masuk',
+                                ],
+                                (object) [
+                                    'name' => 'Surat Keluar',
+                                    'link' => '/olahraga/surat-keluar',
+                                ],
+                            ],
+                        ],
+                        (object) [
+                            'title' => 'AKUN PENGGUNA',
+                        ],
+                        (object) [
+                            'icon' => 'fas fa-user',
+                            'name' => 'Profil Akun',
+                            'link' => '/profil-akun',
+                            'childs' => [],
+                        ],
+                    ];
+                @endphp
+
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-                    <li class="nav-header">MENU UTAMA</li>
-                    <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
-                            <i class="nav-icon fas fa-list"></i>
-                            <p>
-                                Jenis Surat
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Pengguna
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-header">DOKUMEN SURAT</li>
-                    <li class="nav-item menu-close">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Sekretariat
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Surat Masuk</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Surat Keluar</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item menu-closed">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Bidang PP
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Surat Masuk</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Surat Keluar</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item menu-closed">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Bidang Olahraga
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Surat Masuk</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Surat Keluar</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-header">AKUN PENGGUNA</li>
-                    <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Profil Akun
-                            </p>
-                        </a>
-                    </li>
+                    @foreach ($menus as $menu)
+                        @if (isset($menu->title))
+                            <li class="nav-header">{{ $menu->title }}</li>
+                            @continue
+                        @endif
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ !count($menu->childs) && Request::is(trim($menu->link, '/')) ? 'active' : '' }}"
+                                href="{{ count($menu->childs) ? '#' : $menu->link }}">
+                                <i class="nav-icon {{ $menu->icon }}"></i>
+                                <p> {{ $menu->name }}</p>
+                                @if (count($menu->childs))
+                                    <i class="right fas fa-angle-left"></i>
+                                @endif
+                            </a>
+                            @if (count($menu->childs))
+                                <ul class="nav nav-treeview" style="display: none;">
+                                    @foreach ($menu->childs as $child)
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ Request::is(trim($child->link, '/')) ? 'active text-white' : '' }}"
+                                                href="{{ $child->link }}">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>{{ $child->name }}</p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
                     <li class="nav-item">
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -139,6 +143,7 @@
                         </a>
                     </li>
                 </ul>
+
             </nav>
             <!-- /.sidebar-menu -->
         </div>
