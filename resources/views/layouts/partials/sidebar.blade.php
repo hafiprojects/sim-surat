@@ -15,7 +15,7 @@
                     <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Admin SIM Surat</a>
+                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 
@@ -130,11 +130,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="#" class="nav-link" id="logout-button">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>
-                                Logout
-                            </p>
+                            <p>Logout</p>
                         </a>
                     </li>
                 </ul>
@@ -143,3 +144,12 @@
         </div>
         <!-- /.sidebar -->
     </aside>
+
+    @push('scripts')
+        <script>
+            document.getElementById('logout-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('logout-form').submit();
+            });
+        </script>
+    @endpush
