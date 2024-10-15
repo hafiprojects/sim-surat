@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::middleware('is_super_admin')->group(function () {
-        // Manage Users
+        // Manage User Page
+        Route::get('/manajemen-akun', [ManageUserController::class, 'index'])->name('users-management.index');
+        Route::get('/manajemen-akun/tambah', [ManageUserController::class, 'create'])->name('users-management.create');
+        Route::post('/manajemen-akun', [ManageUserController::class, 'store'])->name('users-management.store');
+        Route::get('/manajemen-akun/{id}/edit', [ManageUserController::class, 'edit'])->name('users-management.edit');
+        Route::put('/manajemen-akun/{id}', [ManageUserController::class, 'update'])->name('users-management.update');
+        Route::delete('/manajemen-akun/{id}', [ManageUserController::class, 'destroy'])->name('users-management.destroy');
     });
 
     // Profile Page
