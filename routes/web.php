@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/manajemen-akun/{id}/edit', [ManageUserController::class, 'edit'])->name('users-management.edit');
         Route::put('/manajemen-akun/{id}', [ManageUserController::class, 'update'])->name('users-management.update');
         Route::delete('/manajemen-akun/{id}', [ManageUserController::class, 'destroy'])->name('users-management.destroy');
+        Route::post('/manajemen-akun/{id}/disable', [ManageUserController::class, 'disable'])->name('users-management.disable');
     });
 
     // Profile Page

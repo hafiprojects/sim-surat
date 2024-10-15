@@ -6,6 +6,7 @@ use App\Http\Requests\ManageUser\StoreNewAkun;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use function App\Helpers\hashidDecode;
 
 class ManageUserController extends Controller
 {
@@ -61,20 +62,28 @@ class ManageUserController extends Controller
         return redirect()->route('users-management.index')->with('success', 'Akun berhasil diperbarui!');
     }
 
-    public function disable_user($id)
+    public function disable($id)
     {
-        $user = User::find($id);
-        $user->is_active = false;
-        $user->save();
+        $user = User::find(hashidDecode($id));
 
-        return redirect()->route('users-management.index')->with('success', 'Akun berhasil dinonaktifkan!');
+        if ($user) {
+            $user->is_active = !$user->is_active;
+            $user->save();
+            return redirect()->route('users-management.index')->with('success', 'Akun berhasil dinonaktifkan!');
+        }
+
+        return redirect()->route('users-management.index')->with('error', 'Terjadi kesalahan!');
     }
 
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
+        $user = User::find(hashidDecode($id));
 
-        return redirect()->route('users-management.index')->with('success', 'Akun berhasil dihapus!');
+        if ($user) {
+            $user->delete();
+            return redirect()->route('users-management.index')->with('success', 'Akun berhasil dihapus!');
+        }
+
+        return redirect()->route('users-management.index')->with('error', 'Terjadi kesalahan!');
     }
 }
