@@ -42,10 +42,10 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        // Check user is_active status
+        // Check user is_active status and not soft deleted
         $user = User::where('email', $this->string('email'))->first();
 
-        if (!$user || !$user->is_active || !Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (!$user || !$user->is_active || $user->trashed() || !Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
