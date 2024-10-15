@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ManageUser\StoreNewAkun;
+use App\Http\Requests\ManageUser\UpdateAkun;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -37,25 +38,19 @@ class ManageUserController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::findorFail(hashidDecode($id));
 
         return view('users-management.edit', ['user' => $user]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateAkun $request, $id)
     {
-        // Validate the request...
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $user = User::find($id);
+        $user = User::findorFail(hashidDecode($id));
 
         $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
 
         $user->save();
 
