@@ -43,6 +43,7 @@
                             'name' => 'Pengguna',
                             'link' => '/manajemen-akun',
                             'childs' => [],
+                            'is_superuser' => true, // Menambahkan field ini untuk mengontrol akses
                         ],
                         (object) [
                             'title' => 'DOKUMEN SURAT',
@@ -109,11 +110,15 @@
                             @continue
                         @endif
 
+                        @if (isset($menu->is_superuser) && $menu->is_superuser && !Auth::user()->is_superuser)
+                            @continue {{-- Menghentikan iterasi jika bukan superuser --}}
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link {{ !count($menu->childs) && Request::is(trim($menu->link, '/')) ? 'active' : '' }}"
                                 href="{{ count($menu->childs) ? '#' : $menu->link }}">
                                 <i class="nav-icon {{ $menu->icon }}"></i>
-                                <p> {{ $menu->name }}</p>
+                                <p>{{ $menu->name }}</p>
                                 @if (count($menu->childs))
                                     <i class="right fas fa-angle-left"></i>
                                 @endif
