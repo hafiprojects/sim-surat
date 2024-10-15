@@ -18,6 +18,8 @@ class AdminSeeder extends Seeder
             'name' => 'Admin SIM Surat',
             'email' => 'admin@simsurat.com',
             'password' => Hash::make('admin123'),
+            'is_superuser' => true,
+            'is_active' => true,
         ];
 
         User::create($user);
