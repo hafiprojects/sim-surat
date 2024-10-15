@@ -124,7 +124,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modal-body-confirmation">
                     Apakah Anda yakin ingin {{ $user->is_active ? 'nonaktifkan' : 'aktifkan' }} akun ini?
                 </div>
                 <div class="modal-footer">
@@ -203,7 +203,7 @@
                     toggleForm.setAttribute('action', url);
                     const userActiveStatus =
                         @json($user->is_active); // To update modal message
-                    document.querySelector('.modal-body').innerHTML =
+                    document.querySelector('#modal-body-confirmation').innerHTML =
                         `Apakah Anda yakin ingin ${userActiveStatus ? 'nonaktifkan' : 'aktifkan'} akun ini?`;
                     $(toggleModal).modal('show'); // Use jQuery to show the modal
                 });
