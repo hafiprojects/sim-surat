@@ -16,6 +16,6 @@ class DocumentType extends Model
      * @var array<int, string>
      */
 
-     protected $table = "document_types";
-     protected $guarded = ["id"];
+    protected $table = "document_types";
+    protected $guarded = ["id"];
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DocumentTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,11 @@ Route::middleware('auth')->group(function () {
         Route::delete('/manajemen-akun/{id}', [ManageUserController::class, 'destroy'])->name('users-management.destroy');
         Route::post('/manajemen-akun/{id}/disable', [ManageUserController::class, 'disable'])->name('users-management.disable');
     });
+
+    Route::get('/jenis-surat', [DocumentTypeController::class, 'index'])->name('doc-types-management.index');
+    Route::post('/jenis-surat', [DocumentTypeController::class, 'store'])->name('doc-types-management.store');
+    Route::put('/jenis-surat/{id}', [DocumentTypeController::class, 'update'])->name('doc-types-management.update');
+    Route::delete('/jenis-surat/{id}', [DocumentTypeController::class, 'destroy'])->name('doc-types-management.destroy');
 
     // Profile Page
     Route::get('/profil-akun', [ProfileController::class, 'edit'])->name('profile.edit');
