@@ -4,7 +4,7 @@
         <a href="index3.html" class="brand-link">
             <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                 class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">SIM-SURAT</span>
+            <span class="brand-text font-weight-light">ARSIP SURAT</span>
         </a>
 
         <!-- Sidebar -->
@@ -64,15 +64,15 @@
                         ],
                         (object) [
                             'icon' => 'fas fa-book',
-                            'name' => 'Bidang PP',
+                            'name' => 'Bidang Pemuda',
                             'childs' => [
                                 (object) [
                                     'name' => 'Surat Masuk',
-                                    'link' => '/pp/surat-masuk',
+                                    'link' => '/pemuda/surat-masuk',
                                 ],
                                 (object) [
                                     'name' => 'Surat Keluar',
-                                    'link' => '/pp/surat-keluar',
+                                    'link' => '/pemuda/surat-keluar',
                                 ],
                             ],
                         ],

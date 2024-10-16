@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/manajemen-akun/{id}/disable', [ManageUserController::class, 'disable'])->name('users-management.disable');
     });
 
+    # Manage Jenis Surat
     Route::get('/jenis-surat', [DocumentTypeController::class, 'index'])->name('doc-types-management.index');
     Route::post('/jenis-surat', [DocumentTypeController::class, 'store'])->name('doc-types-management.store');
     Route::put('/jenis-surat/{id}', [DocumentTypeController::class, 'update'])->name('doc-types-management.update');
