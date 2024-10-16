@@ -127,7 +127,7 @@
                                 <ul class="nav nav-treeview" style="display: none;">
                                     @foreach ($menu->childs as $child)
                                         <li class="nav-item">
-                                            <a class="nav-link {{ Request::is(trim($child->link, '/')) ? 'active text-white' : '' }}"
+                                            <a class="nav-link {{ Request::is(trim($child->link, '/')) ? 'active' : '' }}"
                                                 href="{{ $child->link }}">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>{{ $child->name }}</p>
