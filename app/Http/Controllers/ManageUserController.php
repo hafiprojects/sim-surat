@@ -64,6 +64,9 @@ class ManageUserController extends Controller
         if ($user) {
             $user->is_active = !$user->is_active;
             $user->save();
+            if ($user->is_active) {
+                return redirect()->route('users-management.index')->with('success', 'Akun berhasil diaktifkan!');
+            }
             return redirect()->route('users-management.index')->with('success', 'Akun berhasil dinonaktifkan!');
         }
 
