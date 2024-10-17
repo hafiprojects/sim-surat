@@ -114,8 +114,21 @@
                             @continue {{-- Menghentikan iterasi jika bukan superuser --}}
                         @endif
 
-                        <li class="nav-item">
-                            <a class="nav-link {{ !count($menu->childs) && Request::is(trim($menu->link, '/')) ? 'active' : '' }}"
+                        @php
+                            $hasActiveChild = false;
+                            if (count($menu->childs)) {
+                                foreach ($menu->childs as $child) {
+                                    if (Request::is(trim($child->link, '/'))) {
+                                        $hasActiveChild = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        @endphp
+
+                        <li class="nav-item @if ($hasActiveChild) menu-is-opening menu-open @endif">
+                            <a class="nav-link
+                            @if ((!count($menu->childs) && Request::is(trim($menu->link, '/'))) || $hasActiveChild) active @endif"
                                 href="{{ count($menu->childs) ? '#' : $menu->link }}">
                                 <i class="nav-icon {{ $menu->icon }}"></i>
                                 <p>{{ $menu->name }}</p>
@@ -124,7 +137,8 @@
                                 @endif
                             </a>
                             @if (count($menu->childs))
-                                <ul class="nav nav-treeview" style="display: none;">
+                                <ul class="nav nav-treeview"
+                                    style="{{ Request::is(trim($child->link, '/')) ? 'display: block;' : 'display: none;' }}">
                                     @foreach ($menu->childs as $child)
                                         <li class="nav-item">
                                             <a class="nav-link {{ Request::is(trim($child->link, '/')) ? 'active' : '' }}"
