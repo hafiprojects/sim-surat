@@ -11,4 +11,14 @@ class DocumentIn extends Model
 
     protected $table = 'document_ins';
     protected $guarded = ['id'];
+
+    public function documentType()
+    {
+        return $this->belongsTo(DocumentType::class);
+    }
+
+    public function createdByUser()
+    {
+        return $this->belongsTo(User::class, 'created_by_user_id');
+    }
 }

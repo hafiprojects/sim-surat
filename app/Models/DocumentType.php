@@ -18,4 +18,14 @@ class DocumentType extends Model
 
     protected $table = "document_types";
     protected $guarded = ["id"];
+
+    public function documentIn()
+    {
+        return $this->hasMany(DocumentIn::class);
+    }
+
+    public function documentOut()
+    {
+        return $this->hasMany(DocumentOut::class);
+    }
 }

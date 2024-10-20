@@ -11,4 +11,14 @@ class DocumentOut extends Model
 
     protected $table = 'document_outs';
     protected $guarded = ['id'];
+
+    public function documentType()
+    {
+        return $this->belongsTo(DocumentType::class);
+    }
+
+    public function createdByUser()
+    {
+        return $this->belongsTo(User::class, 'created_by_user_id');
+    }
 }

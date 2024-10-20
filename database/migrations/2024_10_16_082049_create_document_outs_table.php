@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string('from'); # Dari
             $table->string('to'); # Kepada
             $table->string('subject'); # Perihal
-            $table->int('document_type_id'); # Jenis Surat
+            $table->unsignedBigInteger('document_type_id'); # Jenis Surat
             $table->text('file'); # File
             $table->text('note')->nullable(); # Catatan
-            $table->enum('department', ['Sekretariat', 'Bidang Pemuda', 'Bidang Olahraga']); # Departemen
-            $table->int('created_by_user_id'); # Dibuat oleh
+            $table->unsignedBigInteger('created_by_user_id'); # Dibuat oleh
             $table->timestamps();
+
+            $table->foreign('document_type_id')->references('id')->on('document_types');
+            $table->foreign('created_by_user_id')->references('id')->on('users');
         });
     }
 
