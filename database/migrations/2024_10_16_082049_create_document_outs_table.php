@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->datetime('sent_at'); # Tanggal dikirim
             $table->string('document_no'); # Nomor Surat
-            $table->string('from'); # Dari
             $table->string('to'); # Kepada
             $table->string('subject'); # Perihal
             $table->unsignedBigInteger('document_type_id'); # Jenis Surat
