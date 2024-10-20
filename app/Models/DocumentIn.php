@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function App\Helpers\hashidEncode;
 
 class DocumentIn extends Model
 {
@@ -11,6 +12,11 @@ class DocumentIn extends Model
 
     protected $table = 'document_ins';
     protected $guarded = ['id'];
+
+    public function getHashidAttribute()
+    {
+        return hashidEncode($this->id);
+    }
 
     public function documentType()
     {
@@ -21,4 +27,8 @@ class DocumentIn extends Model
     {
         return $this->belongsTo(User::class, 'created_by_user_id');
     }
+
+    protected $casts = [
+        'received_at' => 'date',
+    ];
 }

@@ -2,49 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DocumentIn;
 use Illuminate\Http\Request;
 
 class DocumentInController extends Controller
 {
     public function index_doc_sekretariat()
     {
-        $doc_department = 'Sekretariat';
-        $docs = "";
-        return view('docs-management.sekretariat.index', compact('docs', 'doc_department'));
+        $docs = DocumentIn::where('department', 'Sekretariat')->get();
+        return view('docs-management.sekretariat.index', compact('docs'));
     }
 
     public function index_doc_bidang_pemuda()
     {
-        $doc_department = 'Bidang Pemuda';
-        $docs = "";
-        return view('docs-management.pemuda.index', compact('docs', 'doc_department'));
+        $docs = DocumentIn::where('department', 'Bidang Pemuda')->get();
+        return view('docs-management.pemuda.index', compact('docs'));
     }
 
     public function index_doc_bidang_olahraga()
     {
-        $doc_department = 'Bidang Olahraga';
-        $docs = "";
-        return view('docs-management.olahraga.index', compact('docs', 'doc_department'));
+        $docs = DocumentIn::where('department', 'Bidang Olahraga')->get();
+        return view('docs-management.olahraga.index', compact('docs'));
     }
     /* End of Controller for Document In Management (Index)  */
 
     /** Controller for Document In Management (Create) */
     public function create_doc_sekretariat()
     {
-        $doc_department = 'Sekretariat';
-        return view('docs-management.sekretariat.add', compact('doc_department'));
+        return view('docs-management.sekretariat.add');
     }
 
     public function create_doc_bidang_pemuda()
     {
-        $doc_department = 'Bidang Pemuda';
-        return view('docs-management.pemuda.add', compact('doc_department'));
+        return view('docs-management.pemuda.add');
     }
 
     public function create_doc_bidang_olahraga()
     {
-        $doc_department = 'Bidang Olahraga';
-        return view('docs-management.olahraga.add', compact('doc_department'));
+        return view('docs-management.olahraga.add');
     }
     /* Controller for Document In Management (Create)  */
 
@@ -73,20 +68,17 @@ class DocumentInController extends Controller
     /** Controller for Document In Management (Edit) */
     public function edit_doc_sekretariat($id)
     {
-        $doc_department = 'Sekretariat';
-        return view('docs-management.sekretariat.edit', compact('doc_department'));
+        return view('docs-management.sekretariat.edit');
     }
 
     public function edit_doc_bidang_pemuda($id)
     {
-        $doc_department = 'Bidang Pemuda';
-        return view('docs-management.pemuda.edit', compact('doc_department'));
+        return view('docs-management.pemuda.edit');
     }
 
     public function edit_doc_bidang_olahraga($id)
     {
-        $doc_department = 'Bidang Olahraga';
-        return view('docs-management.olahraga.edit', compact('doc_department'));
+        return view('docs-management.olahraga.edit');
     }
     /* End of Controller for Document In Management (Edit) */
 

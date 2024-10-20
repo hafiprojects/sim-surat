@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DocumentOut;
 
 class DocumentOutController extends Controller
 {
     public function index()
     {
-        return view('docs-management.out-document.index');
+        $docs = DocumentOut::all();
+        return view('docs-management.out-document.index', compact('docs'));
     }
 
     public function create()

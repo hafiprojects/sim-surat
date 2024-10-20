@@ -17,7 +17,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Jenis Surat</li>
+                        <li class="breadcrumb-item active">Surat Masuk Bidang Pemuda</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,9 +34,38 @@
             </a>
         </div>
         <div class="card-body">
+            @php
+                $routingEndpointAlias = ['doc-pemuda-in.edit', 'doc-pemuda-in.show', 'doc-pemuda-in.destroy'];
+            @endphp
             @include('docs-management.include._table-surat-masuk')
         </div>
         <!-- /.card-body -->
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin menghapus data ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <form id="deleteForm" action="" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -77,6 +106,20 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            const deleteModal = document.getElementById('deleteModal');
+            const deleteForm = document.getElementById('deleteForm');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    deleteForm.setAttribute('action', url);
+                    $(deleteModal).modal('show'); // Use jQuery to show the modal
+                });
             });
         });
     </script>
