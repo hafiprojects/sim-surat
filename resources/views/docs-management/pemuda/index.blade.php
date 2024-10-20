@@ -12,11 +12,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    @if ($doc_type == 'In')
                     <h1 class="m-0">Manajemen Surat Masuk Bidang Pemuda</h1>
-                    @elseif ($doc_type == 'Out')
-                    <h1 class="m-0">Manajemen Surat Keluar Bidang Pemuda</h1>
-                    @endif
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -32,24 +28,13 @@
 @section('main-content')
     <div class="card">
         <div class="card-header">
-            @if ($doc_type == 'In')
-                <a href="{{ route('doc-pemuda-in.create') }}" class="btn btn-info">
-                    <i class="fas fa-plus"></i>
-                    &nbsp;&nbsp;Tambah Surat Masuk
-                </a>
-            @elseif ($doc_type == 'Out')
-                <a href="{{ route('doc-pemuda-out.create') }}" class="btn btn-info">
-                    <i class="fas fa-plus"></i>
-                    &nbsp;&nbsp;Tambah Surat Keluar
-                </a>
-            @endif
+            <a href="{{ route('doc-pemuda-in.create') }}" class="btn btn-info">
+                <i class="fas fa-plus"></i>
+                &nbsp;&nbsp;Tambah Surat Masuk
+            </a>
         </div>
         <div class="card-body">
-            @if ($doc_type == 'In')
-                @include('docs-management.include._table-surat-masuk')
-            @elseif ($doc_type == 'Out')
-                @include('docs-management.include._table-surat-keluar')
-            @endif
+            @include('docs-management.include._table-surat-masuk')
         </div>
         <!-- /.card-body -->
     </div>

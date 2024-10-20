@@ -8,49 +8,43 @@ class DocumentInController extends Controller
 {
     public function index_doc_sekretariat()
     {
-        $doc_type = 'In';
         $doc_department = 'Sekretariat';
         $docs = "";
-        return view('docs-management.sekretariat.index', compact('docs', 'doc_department', 'doc_type'));
+        return view('docs-management.sekretariat.index', compact('docs', 'doc_department'));
     }
 
     public function index_doc_bidang_pemuda()
     {
-        $doc_type = 'In';
         $doc_department = 'Bidang Pemuda';
         $docs = "";
-        return view('docs-management.pemuda.index', compact('docs', 'doc_department', 'doc_type'));
+        return view('docs-management.pemuda.index', compact('docs', 'doc_department'));
     }
 
     public function index_doc_bidang_olahraga()
     {
-        $doc_type = 'In';
         $doc_department = 'Bidang Olahraga';
         $docs = "";
-        return view('docs-management.olahraga.index', compact('docs', 'doc_department', 'doc_type'));
+        return view('docs-management.olahraga.index', compact('docs', 'doc_department'));
     }
     /* End of Controller for Document In Management (Index)  */
 
     /** Controller for Document In Management (Create) */
     public function create_doc_sekretariat()
     {
-        $doc_type = 'In';
         $doc_department = 'Sekretariat';
-        return view('docs-management.sekretariat.add', compact('doc_department', 'doc_type'));
+        return view('docs-management.sekretariat.add', compact('doc_department'));
     }
 
     public function create_doc_bidang_pemuda()
     {
-        $doc_type = 'In';
         $doc_department = 'Bidang Pemuda';
-        return view('docs-management.pemuda.add', compact('doc_department', 'doc_type'));
+        return view('docs-management.pemuda.add', compact('doc_department'));
     }
 
     public function create_doc_bidang_olahraga()
     {
-        $doc_type = 'In';
         $doc_department = 'Bidang Olahraga';
-        return view('docs-management.olahraga.add', compact('doc_department', 'doc_type'));
+        return view('docs-management.olahraga.add', compact('doc_department'));
     }
     /* Controller for Document In Management (Create)  */
 
@@ -71,26 +65,28 @@ class DocumentInController extends Controller
     }
     /* End of Controller for Document In Management (Store) */
 
+    public function show_doc($id)
+    {
+        return view('docs-management.show');
+    }
+
     /** Controller for Document In Management (Edit) */
     public function edit_doc_sekretariat($id)
     {
-        $doc_type = 'In';
         $doc_department = 'Sekretariat';
-        return view('docs-management.sekretariat.edit', compact('doc_department', 'doc_type'));
+        return view('docs-management.sekretariat.edit', compact('doc_department'));
     }
 
     public function edit_doc_bidang_pemuda($id)
     {
-        $doc_type = 'In';
         $doc_department = 'Bidang Pemuda';
-        return view('docs-management.pemuda.edit', compact('doc_department', 'doc_type'));
+        return view('docs-management.pemuda.edit', compact('doc_department'));
     }
 
     public function edit_doc_bidang_olahraga($id)
     {
-        $doc_type = 'In';
         $doc_department = 'Bidang Olahraga';
-        return view('docs-management.olahraga.edit', compact('doc_department', 'doc_type'));
+        return view('docs-management.olahraga.edit', compact('doc_department'));
     }
     /* End of Controller for Document In Management (Edit) */
 

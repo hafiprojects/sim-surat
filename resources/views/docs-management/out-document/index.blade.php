@@ -12,12 +12,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manajemen Surat Masuk Sekretariat</h1>
+                    <h1 class="m-0">Manajemen Surat Keluar</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Jenis Surat</li>
+                        <li class="breadcrumb-item active">Surat Keluar</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,13 +28,13 @@
 @section('main-content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('doc-sekretariat-in.create') }}" class="btn btn-info">
+            <a href="{{ route('doc-out.create') }}" class="btn btn-info">
                 <i class="fas fa-plus"></i>
-                &nbsp;&nbsp;Tambah Surat Masuk
+                &nbsp;&nbsp;Tambah Surat Keluar
             </a>
         </div>
         <div class="card-body">
-            @include('docs-management.include._table-surat-masuk')
+            @include('docs-management.include._table-surat-keluar')
         </div>
         <!-- /.card-body -->
     </div>

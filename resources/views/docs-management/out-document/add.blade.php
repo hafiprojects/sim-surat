@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Tambah Surat Masuk Sekretariat</h1>
+                    <h1 class="m-0">Tambah Surat Keluar</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -19,7 +19,7 @@
 @endsection
 
 @section('main-content')
-    @include('docs-management.include._form-surat-masuk')
+    @include('docs-management.include._form-surat-keluar')
 @endsection
 
 @push('scripts')

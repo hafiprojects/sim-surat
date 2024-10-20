@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sekretariat/surat-masuk', [DocumentInController::class, 'index_doc_sekretariat'])->name('doc-sekretariat-in.index');
     Route::get('/sekretariat/surat-masuk/tambah', [DocumentInController::class, 'create_doc_sekretariat'])->name('doc-sekretariat-in.create');
     Route::post('/sekretariat/surat-masuk', [DocumentInController::class, 'store_doc_sekretariat'])->name('doc-sekretariat-in.store');
+    Route::get('/sekretariat/surat-masuk/{id}', [DocumentInController::class, 'show_doc'])->name('doc-sekretariat-in.show');
     Route::get('/sekretariat/surat-masuk/{id}/edit', [DocumentInController::class, 'edit_doc_sekretariat'])->name('doc-sekretariat-in.edit');
     Route::put('/sekretariat/surat-masuk/{id}', [DocumentInController::class, 'update_doc_sekretariat'])->name('doc-sekretariat-in.update');
     Route::delete('/sekretariat/surat-masuk/{id}', [DocumentInController::class, 'destroy_doc_sekretariat'])->name('doc-sekretariat-in.destroy');
@@ -67,6 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pemuda/surat-masuk', [DocumentInController::class, 'index_doc_bidang_pemuda'])->name('doc-pemuda-in.index');
     Route::get('/pemuda/surat-masuk/tambah', [DocumentInController::class, 'create_doc_bidang_pemuda'])->name('doc-pemuda-in.create');
     Route::post('/pemuda/surat-masuk', [DocumentInController::class, 'store_doc_bidang_pemuda'])->name('doc-pemuda-in.store');
+    Route::get('/pemuda/surat-masuk/{id}', [DocumentInController::class, 'show_doc'])->name('doc-pemuda-in.show');
     Route::get('/pemuda/surat-masuk/{id}/edit', [DocumentInController::class, 'edit_doc_bidang_pemuda'])->name('doc-pemuda-in.edit');
     Route::put('/pemuda/surat-masuk/{id}', [DocumentInController::class, 'update_doc_bidang_pemuda'])->name('doc-pemuda-in.update');
     Route::delete('/pemuda/surat-masuk/{id}', [DocumentInController::class, 'destroy_doc_bidang_pemuda'])->name('doc-pemuda-in.destroy');
@@ -75,33 +77,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/olahraga/surat-masuk', [DocumentInController::class, 'index_doc_bidang_olahraga'])->name('doc-olahraga-in.index');
     Route::get('/olahraga/surat-masuk/tambah', [DocumentInController::class, 'create_doc_bidang_olahraga'])->name('doc-olahraga-in.create');
     Route::post('/olahraga/surat-masuk', [DocumentInController::class, 'store_doc_bidang_olahraga'])->name('doc-olahraga-in.store');
+    Route::get('/olahraga/surat-masuk/{id}', [DocumentInController::class, 'show_doc'])->name('doc-olahraga-in.show');
     Route::get('/olahraga/surat-masuk/{id}/edit', [DocumentInController::class, 'edit_doc_bidang_olahraga'])->name('doc-olahraga-in.edit');
     Route::put('/olahraga/surat-masuk/{id}', [DocumentInController::class, 'update_doc_bidang_olahraga'])->name('doc-olahraga-in.update');
     Route::delete('/olahraga/surat-masuk/{id}', [DocumentInController::class, 'destroy_doc_bidang_olahraga'])->name('doc-olahraga-in.destroy');
 
-    # Surat Keluar Bidang Sekretariat
-    Route::get('/sekretariat/surat-keluar', [DocumentOutController::class, 'index_doc_sekretariat'])->name('doc-sekretariat-out.index');
-    Route::get('/sekretariat/surat-keluar/tambah', [DocumentOutController::class, 'create_doc_sekretariat'])->name('doc-sekretariat-out.create');
-    Route::post('/sekretariat/surat-keluar', [DocumentOutController::class, 'store_doc_sekretariat'])->name('doc-sekretariat-out.store');
-    Route::get('/sekretariat/surat-keluar/{id}/edit', [DocumentOutController::class, 'edit_doc_sekretariat'])->name('doc-sekretariat-out.edit');
-    Route::put('/sekretariat/surat-keluar/{id}', [DocumentOutController::class, 'update_doc_sekretariat'])->name('doc-sekretariat-out.update');
-    Route::delete('/sekretariat/surat-keluar/{id}', [DocumentOutController::class, 'destroy_doc_sekretariat'])->name('doc-sekretariat-out.destroy');
-
-    # Surat Keluar Bidang Pemuda
-    Route::get('/pemuda/surat-keluar', [DocumentOutController::class, 'index_doc_bidang_pemuda'])->name('doc-pemuda-out.index');
-    Route::get('/pemuda/surat-keluar/tambah', [DocumentOutController::class, 'create_doc_bidang_pemuda'])->name('doc-pemuda-out.create');
-    Route::post('/pemuda/surat-keluar', [DocumentOutController::class, 'store_doc_bidang_pemuda'])->name('doc-pemuda-out.store');
-    Route::get('/pemuda/surat-keluar/{id}/edit', [DocumentOutController::class, 'edit_doc_bidang_pemuda'])->name('doc-pemuda-out.edit');
-    Route::put('/pemuda/surat-keluar/{id}', [DocumentOutController::class, 'update_doc_bidang_pemuda'])->name('doc-pemuda-out.update');
-    Route::delete('/pemuda/surat-keluar/{id}', [DocumentOutController::class, 'destroy_doc_bidang_pemuda'])->name('doc-pemuda-out.destroy');
-
-    # Surat Keluar Bidang Olahraga
-    Route::get('/olahraga/surat-keluar', [DocumentOutController::class, 'index_doc_bidang_olahraga'])->name('doc-olahraga-out.index');
-    Route::get('/olahraga/surat-keluar/tambah', [DocumentOutController::class, 'create_doc_bidang_olahraga'])->name('doc-olahraga-out.create');
-    Route::post('/olahraga/surat-keluar', [DocumentOutController::class, 'store_doc_bidang_olahraga'])->name('doc-olahraga-out.store');
-    Route::get('/olahraga/surat-keluar/{id}/edit', [DocumentOutController::class, 'edit_doc_bidang_olahraga'])->name('doc-olahraga-out.edit');
-    Route::put('/olahraga/surat-keluar/{id}', [DocumentOutController::class, 'update_doc_bidang_olahraga'])->name('doc-olahraga-out.update');
-    Route::delete('/olahraga/surat-keluar/{id}', [DocumentOutController::class, 'destroy_doc_bidang_olahraga'])->name('doc-olahraga-out.destroy');
+    # Surat Keluar
+    Route::get('/surat-keluar', [DocumentOutController::class, 'index'])->name('doc-out.index');
+    Route::get('/surat-keluar/tambah', [DocumentOutController::class, 'create'])->name('doc-out.create');
+    Route::post('/surat-keluar', [DocumentOutController::class, 'store'])->name('doc-out.store');
+    Route::get('/surat-keluar/{id}', [DocumentOutController::class, 'show'])->name('doc-out.show');
+    Route::get('/surat-keluar/{id}/edit', [DocumentOutController::class, 'edit'])->name('doc-out.edit');
+    Route::put('/surat-keluar/{id}', [DocumentOutController::class, 'update'])->name('doc-out.update');
+    Route::delete('/surat-keluar/{id}', [DocumentOutController::class, 'destroy'])->name('doc-out.destroy');
 
     // Profile Page
     Route::get('/profil-akun', [ProfileController::class, 'edit'])->name('profile.edit');
