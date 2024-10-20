@@ -1,10 +1,10 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-            <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+        <a href="{{ route('dashboard') }}" class="brand-link">
+            <img src="{{ asset('dist/img/logo-dispora.png') }}" alt="AdminLTE Logo"
                 class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">ARSIP SURAT</span>
+            <span class="brand-text font-weight-bold">ARSIP SURAT</span>
         </a>
 
         <!-- Sidebar -->
@@ -50,45 +50,27 @@
                         ],
                         (object) [
                             'icon' => 'fas fa-book',
-                            'name' => 'Sekretariat',
+                            'name' => 'Surat Masuk',
                             'childs' => [
                                 (object) [
-                                    'name' => 'Surat Masuk',
+                                    'name' => 'Sekertariat',
                                     'link' => '/sekretariat/surat-masuk',
                                 ],
                                 (object) [
-                                    'name' => 'Surat Keluar',
-                                    'link' => '/sekretariat/surat-keluar',
-                                ],
-                            ],
-                        ],
-                        (object) [
-                            'icon' => 'fas fa-book',
-                            'name' => 'Bidang Pemuda',
-                            'childs' => [
-                                (object) [
-                                    'name' => 'Surat Masuk',
+                                    'name' => 'Bidang Pemuda',
                                     'link' => '/pemuda/surat-masuk',
                                 ],
                                 (object) [
-                                    'name' => 'Surat Keluar',
-                                    'link' => '/pemuda/surat-keluar',
+                                    'name' => 'Bidang Olahraga',
+                                    'link' => '/olahraga/surat-masuk',
                                 ],
                             ],
                         ],
                         (object) [
                             'icon' => 'fas fa-book',
-                            'name' => 'Bidang Olahraga',
-                            'childs' => [
-                                (object) [
-                                    'name' => 'Surat Masuk',
-                                    'link' => '/olahraga/surat-masuk',
-                                ],
-                                (object) [
-                                    'name' => 'Surat Keluar',
-                                    'link' => '/olahraga/surat-keluar',
-                                ],
-                            ],
+                            'name' => 'Surat Keluar',
+                            'link' => '/surat-keluar',
+                            'childs' => [],
                         ],
                         (object) [
                             'title' => 'AKUN PENGGUNA',
