@@ -68,7 +68,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" onclick="history.back()">Kembali</button>
+                        <a href="{{ route('users-management.index') }}" class="btn btn-primary">Kembali</a>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </form>
