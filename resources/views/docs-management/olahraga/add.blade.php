@@ -19,6 +19,7 @@
 @endsection
 
 @section('main-content')
+    @php $storeRoute = route('doc-olahraga-in.store') @endphp
     @include('docs-management.include._form-surat-masuk')
 @endsection
 

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DocumentIn\StoreOlahraga;
+use App\Http\Requests\DocumentIn\StorePemuda;
+use App\Http\Requests\DocumentIn\StoreSekretariat;
 use App\Models\DocumentIn;
 use Illuminate\Http\Request;
+use App\Models\DocumentType;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentInController extends Controller
 {
@@ -29,34 +34,69 @@ class DocumentInController extends Controller
     /** Controller for Document In Management (Create) */
     public function create_doc_sekretariat()
     {
-        return view('docs-management.sekretariat.add');
+        $docTypes = DocumentType::all();
+        return view('docs-management.sekretariat.add', compact('docTypes'));
     }
 
     public function create_doc_bidang_pemuda()
     {
-        return view('docs-management.pemuda.add');
+        $docTypes = DocumentType::all();
+        return view('docs-management.pemuda.add', compact('docTypes'));
     }
 
     public function create_doc_bidang_olahraga()
     {
-        return view('docs-management.olahraga.add');
+        $docTypes = DocumentType::all();
+        return view('docs-management.olahraga.add', compact('docTypes'));
     }
     /* Controller for Document In Management (Create)  */
 
     /** Controller for Document In Management (Store) */
-    public function store_doc_sekretariat(Request $request)
+    public function store_doc_sekretariat(StoreSekretariat $request)
     {
-        return redirect()->route('doc-sekretariat.index');
+        $data = $request->validated();
+
+        $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+        $request->file->move(public_path('documents-in'), $fileName);
+        $data['file'] = 'documents-in/' . $fileName;
+        $data['department'] = 'Sekretariat';
+        $data['created_by_user_id'] = auth()->user()->id;
+
+        DocumentIn::create($data);
+
+        return redirect()->route('doc-sekretariat-in.index',)->with('success', 'Document berhasil ditambahkan');
     }
 
-    public function store_doc_bidang_pemuda(Request $request)
+    public function store_doc_bidang_pemuda(StorePemuda $request)
     {
-        return redirect()->route('doc-pemuda.index');
+        $data = $request->validated();
+
+        $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+
+        $request->file->move(public_path('documents-in'), $fileName);
+        $data['file'] = 'documents-in/' . $fileName;
+        $data['department'] = 'Bidang Pemuda';
+        $data['created_by_user_id'] = auth()->user()->id;
+
+        DocumentIn::create($data);
+
+        return redirect()->route('doc-pemuda-in.index');
     }
 
-    public function store_doc_bidang_olahraga(Request $request)
+    public function store_doc_bidang_olahraga(StoreOlahraga $request)
     {
-        return redirect()->route('doc-olahraga.index');
+        $data = $request->validated();
+
+        $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+
+        $request->file->move(public_path('documents-in'), $fileName);
+        $data['file'] = 'documents-in/' . $fileName;
+        $data['department'] = 'Bidang Olahraga';
+        $data['created_by_user_id'] = auth()->user()->id;
+
+        DocumentIn::create($data);
+
+        return redirect()->route('doc-olahraga-in.index');
     }
     /* End of Controller for Document In Management (Store) */
 
