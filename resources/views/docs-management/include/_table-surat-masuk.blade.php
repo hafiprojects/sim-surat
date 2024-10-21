@@ -15,7 +15,7 @@
         @foreach ($docs as $index => $doc)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ $doc->received_at->format('Y-m-d') }}</td>
+                <td>{{ $doc->received_at->format('d-m-Y') }}</td>
                 <td>{{ $doc->document_no }}</td>
                 <td>{{ $doc->documentType->name }}</td>
                 <td>{{ $doc->from }}</td>
