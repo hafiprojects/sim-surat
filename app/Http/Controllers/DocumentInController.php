@@ -108,8 +108,9 @@ class DocumentInController extends Controller
 
     public function show_doc($id)
     {
+        $documentIn = true;
         $doc = DocumentIn::findorFail(hashidDecode($id));
-        return view('docs-management.show', compact('doc'));
+        return view('docs-management.show', compact('doc', 'documentIn'));
     }
 
     /** Controller for Document In Management (Edit) */
