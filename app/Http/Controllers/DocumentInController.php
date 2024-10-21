@@ -62,7 +62,7 @@ class DocumentInController extends Controller
     {
         $data = $request->validated();
 
-        $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+        $fileName = 'surat_masuk_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
         $request->file->move(public_path('documents-in'), $fileName);
         $data['file'] = 'documents-in/' . $fileName;
         $data['department'] = 'Sekretariat';
@@ -77,7 +77,7 @@ class DocumentInController extends Controller
     {
         $data = $request->validated();
 
-        $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+        $fileName = 'surat_masuk_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
 
         $request->file->move(public_path('documents-in'), $fileName);
         $data['file'] = 'documents-in/' . $fileName;
@@ -93,7 +93,7 @@ class DocumentInController extends Controller
     {
         $data = $request->validated();
 
-        $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+        $fileName = 'surat_masuk_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
 
         $request->file->move(public_path('documents-in'), $fileName);
         $data['file'] = 'documents-in/' . $fileName;
@@ -144,7 +144,7 @@ class DocumentInController extends Controller
 
         if ($request->hasFile('file')) {
             File::delete(public_path($doc->file));
-            $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $fileName = 'surat_masuk_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
             $request->file->move(public_path('documents-in'), $fileName);
             $data['file'] = 'documents-in/' . $fileName;
         }
@@ -160,7 +160,7 @@ class DocumentInController extends Controller
 
         if ($request->hasFile('file')) {
             File::delete(public_path($doc->file));
-            $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $fileName = 'surat_masuk_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
             $request->file->move(public_path('documents-in'), $fileName);
             $data['file'] = 'documents-in/' . $fileName;
         }
@@ -176,7 +176,7 @@ class DocumentInController extends Controller
 
         if ($request->hasFile('file')) {
             File::delete(public_path($doc->file));
-            $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $fileName = 'surat_masuk_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
             $request->file->move(public_path('documents-in'), $fileName);
             $data['file'] = 'documents-in/' . $fileName;
         }
