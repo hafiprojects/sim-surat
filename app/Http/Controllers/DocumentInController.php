@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\DocumentType;
 use Illuminate\Support\Facades\Storage;
 
+use function App\Helpers\hashidDecode;
+
 class DocumentInController extends Controller
 {
     public function index_doc_sekretariat()
@@ -102,57 +104,64 @@ class DocumentInController extends Controller
 
     public function show_doc($id)
     {
-        return view('docs-management.show');
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+        return view('docs-management.show', compact('doc'));
     }
 
     /** Controller for Document In Management (Edit) */
     public function edit_doc_sekretariat($id)
     {
-        return view('docs-management.sekretariat.edit');
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+        $docTypes = DocumentType::all();
+        return view('docs-management.sekretariat.edit', compact('doc', 'docTypes'));
     }
 
     public function edit_doc_bidang_pemuda($id)
     {
-        return view('docs-management.pemuda.edit');
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+        $docTypes = DocumentType::all();
+        return view('docs-management.pemuda.edit', compact('doc', 'docTypes'));
     }
 
     public function edit_doc_bidang_olahraga($id)
     {
-        return view('docs-management.olahraga.edit');
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+        $docTypes = DocumentType::all();
+        return view('docs-management.olahraga.edit', compact('doc', 'docTypes'));
     }
     /* End of Controller for Document In Management (Edit) */
 
     /** Controller for Document In Management (Update) */
     public function update_doc_sekretariat(Request $request, $id)
     {
-        return redirect()->route('doc-sekretariat.index');
+        return redirect()->route('doc-sekretariat-in.index');
     }
 
     public function update_doc_bidang_pemuda(Request $request, $id)
     {
-        return redirect()->route('doc-pemuda.index');
+        return redirect()->route('doc-pemuda-in.index');
     }
 
     public function update_doc_bidang_olahraga(Request $request, $id)
     {
-        return redirect()->route('doc-olahraga.index');
+        return redirect()->route('doc-olahraga-in.index');
     }
     /* End of Controller for Document In Management (Update) */
 
     /** Controller for Document In Management (Destroy) */
     public function destroy_doc_sekretariat($id)
     {
-        return redirect()->route('doc-sekretariat.index');
+        return redirect()->route('doc-sekretariat-in.index');
     }
 
     public function destroy_doc_bidang_pemuda($id)
     {
-        return redirect()->route('doc-pemuda.index');
+        return redirect()->route('doc-pemuda-in.index');
     }
 
     public function destroy_doc_bidang_olahraga($id)
     {
-        return redirect()->route('doc-olahraga.index');
+        return redirect()->route('doc-olahraga-in.index');
     }
     /* End of Controller for Document In Management (Destroy) */
 }

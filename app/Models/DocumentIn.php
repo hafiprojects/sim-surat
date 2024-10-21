@@ -30,5 +30,6 @@ class DocumentIn extends Model
 
     protected $casts = [
         'received_at' => 'date',
+        'finished_at' => 'date',
     ];
 }
