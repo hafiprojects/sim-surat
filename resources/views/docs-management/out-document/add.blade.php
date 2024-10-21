@@ -19,6 +19,7 @@
 @endsection
 
 @section('main-content')
+    @php $storeRoute = route('doc-out.store') @endphp
     @include('docs-management.include._form-surat-keluar')
 @endsection
 
