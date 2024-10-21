@@ -70,7 +70,8 @@
                                 <input type="file" class="form-control" name="file" accept="application/pdf">
                                 @if ($doc->file)
                                     <small>Current File: <a href="{{ asset($doc->file) }}"
-                                            target="_blank">{{ $doc->file }}</a></small>
+                                            target="_blank">{{ $doc->file }}</a></small> <br>
+                                    <small>kosongkan jika tidak ingin dirubah </small>
                                 @endif
                                 @error('file')
                                     <small style="color: red;">{{ $message }}</small>
@@ -109,8 +110,6 @@
                                 <label>Tanggal Tindakan Penyelesaian</label>
                                 <input name="finished_at" type="date" class="form-control"
                                     value="{{ old('finished_at', optional($doc->finished_at)->format('Y-m-d')) }}">
-                                {{ optional($doc->finished_at)->format('Y-m-d') }}
-                                {{ optional($doc->received_at)->format('Y-m-d') }}
                                 @error('finished_at')
                                     <small style="color: red;">{{ $message }}</small>
                                 @enderror

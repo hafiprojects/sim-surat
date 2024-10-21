@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DocumentIn\StoreOlahraga;
 use App\Http\Requests\DocumentIn\StorePemuda;
 use App\Http\Requests\DocumentIn\StoreSekretariat;
+use App\Http\Requests\DocumentIn\UpdateOlahraga;
+use App\Http\Requests\DocumentIn\UpdatePemuda;
+use App\Http\Requests\DocumentIn\UpdateSekretariat;
 use App\Models\DocumentIn;
 use Illuminate\Http\Request;
 use App\Models\DocumentType;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 use function App\Helpers\hashidDecode;
 
@@ -66,7 +70,7 @@ class DocumentInController extends Controller
 
         DocumentIn::create($data);
 
-        return redirect()->route('doc-sekretariat-in.index',)->with('success', 'Document berhasil ditambahkan');
+        return redirect()->route('doc-sekretariat-in.index',)->with('success', 'Dokumen berhasil ditambahkan');
     }
 
     public function store_doc_bidang_pemuda(StorePemuda $request)
@@ -132,36 +136,90 @@ class DocumentInController extends Controller
     /* End of Controller for Document In Management (Edit) */
 
     /** Controller for Document In Management (Update) */
-    public function update_doc_sekretariat(Request $request, $id)
+    public function update_doc_sekretariat(UpdateSekretariat $request, $id)
     {
-        return redirect()->route('doc-sekretariat-in.index');
+        $data = $request->validated();
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+
+        if ($request->hasFile('file')) {
+            File::delete(public_path($doc->file));
+            $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file->move(public_path('documents-in'), $fileName);
+            $data['file'] = 'documents-in/' . $fileName;
+        }
+
+        $doc->update($data);
+        return redirect()->route('doc-sekretariat-in.index')->with('success', 'Dokumen berhasil diupdate');
     }
 
-    public function update_doc_bidang_pemuda(Request $request, $id)
+    public function update_doc_bidang_pemuda(UpdatePemuda $request, $id)
     {
-        return redirect()->route('doc-pemuda-in.index');
+        $data = $request->validated();
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+
+        if ($request->hasFile('file')) {
+            File::delete(public_path($doc->file));
+            $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file->move(public_path('documents-in'), $fileName);
+            $data['file'] = 'documents-in/' . $fileName;
+        }
+
+        $doc->update($data);
+        return redirect()->route('doc-pemuda-in.index')->with('success', 'Dokumen berhasil diupdate');
     }
 
-    public function update_doc_bidang_olahraga(Request $request, $id)
+    public function update_doc_bidang_olahraga(UpdateOlahraga $request, $id)
     {
-        return redirect()->route('doc-olahraga-in.index');
+        $data = $request->validated();
+        $doc = DocumentIn::findorFail(hashidDecode($id));
+
+        if ($request->hasFile('file')) {
+            File::delete(public_path($doc->file));
+            $fileName = 'document_name_' . time() . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file->move(public_path('documents-in'), $fileName);
+            $data['file'] = 'documents-in/' . $fileName;
+        }
+
+        $doc->update($data);
+        return redirect()->route('doc-sekretariat-in.index')->with('success', 'Dokumen berhasil diupdate');
     }
     /* End of Controller for Document In Management (Update) */
 
     /** Controller for Document In Management (Destroy) */
     public function destroy_doc_sekretariat($id)
     {
-        return redirect()->route('doc-sekretariat-in.index');
+        $doc = DocumentIn::find(hashidDecode($id));
+        if ($doc->file) {
+            File::delete(public_path($doc->file));
+            $doc->delete();
+            return redirect()->route('doc-sekretariat-in.index')->with('success', 'Dokumen berhasil dihapus');
+        }
+
+        return redirect()->route('doc-sekretariat-in.index')->with('error', 'Terjadi Kesalahan');
     }
 
     public function destroy_doc_bidang_pemuda($id)
     {
-        return redirect()->route('doc-pemuda-in.index');
+        $doc = DocumentIn::find(hashidDecode($id));
+        if ($doc->file) {
+            File::delete(public_path($doc->file));
+            $doc->delete();
+            return redirect()->route('doc-pemuda-in.index')->with('success', 'Dokumen berhasil dihapus');
+        }
+
+        return redirect()->route('doc-pemuda-in.index')->with('error', 'Terjadi Kesalahan');
     }
 
     public function destroy_doc_bidang_olahraga($id)
     {
-        return redirect()->route('doc-olahraga-in.index');
+        $doc = DocumentIn::find(hashidDecode($id));
+        if ($doc->file) {
+            File::delete(public_path($doc->file));
+            $doc->delete();
+            return redirect()->route('doc-olahraga-in.index')->with('success', 'Dokumen berhasil dihapus');
+        }
+
+        return redirect()->route('doc-olahraga-in.index')->with('error', 'Terjadi Kesalahan');
     }
     /* End of Controller for Document In Management (Destroy) */
 }
