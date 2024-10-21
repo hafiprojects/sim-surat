@@ -105,6 +105,7 @@
                             <div class="form-group">
                                 <label>Diteruskan Kepada</label>
                                 <textarea name="forwarded_to" class="form-control" rows="3" placeholder="Catatan Surat">{{ old('forwarded_to') }}</textarea>
+                                <small>Gunakan tag &lt;br&gt; untuk menambahkan enter</small>
                                 @error('forwarded_to')
                                     <small style="color: red;">{{ $message }}</small>
                                 @enderror
