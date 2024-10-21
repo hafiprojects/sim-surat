@@ -119,7 +119,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" onclick="history.back()">Kembali</button>
+                    <button type="button" class="btn btn-primary"
+                        onclick="window.location.replace(document.referrer);">Kembali</button>
                     <button type="submit" class="btn btn-success">Submit</button>
                 </div>
             </form>
