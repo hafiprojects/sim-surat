@@ -115,12 +115,6 @@
                     <span class="text-muted float-start">
                         <strong class="text-danger">*</strong> Wajib Diisi
                     </span>
-
-                    @if ($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div>{{ $error }}</div>
-                        @endforeach
-                    @endif
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
