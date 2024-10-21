@@ -14,10 +14,14 @@ class DocumentTypeSeeder extends Seeder
     public function run(): void
     {
         $documentTypes = [
-            ['name' => 'Surat Biasa'],
-            ['name' => 'Surat Rahasia'],
+            ['name' => 'Surat Umum'],
+            ['name' => 'Surat Konfidensial'],
             ['name' => 'Surat Izin'],
             ['name' => 'Surat Keputusan'],
+            ['name' => 'Surat Pernyataan'],
+            ['name' => 'Surat Pemberitahuan'],
+            ['name' => 'Surat Perintah'],
+            ['name' => 'Surat Perjanjian'],
         ];
 
         foreach ($documentTypes as $documentType) {
