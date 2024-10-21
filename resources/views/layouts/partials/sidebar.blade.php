@@ -112,7 +112,7 @@
                         @endphp
 
                         <li class="nav-item @if ($hasActiveChild) menu-open @endif">
-                            <a class="nav-link @if ((!count($menu->childs) && Request::is(trim($menu->link, '/'))) || $hasActiveChild) active @endif"
+                            <a class="nav-link @if ((!count($menu->childs) && Request::is(trim($menu->link, '/') . '*')) || $hasActiveChild) active @endif"
                                 href="{{ count($menu->childs) ? '#' : $menu->link }}">
                                 <i class="nav-icon {{ $menu->icon }}"></i>
                                 <p>{{ $menu->name }}</p>
