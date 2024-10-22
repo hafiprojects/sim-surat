@@ -182,7 +182,7 @@ class DocumentInController extends Controller
         }
 
         $doc->update($data);
-        return redirect()->route('doc-sekretariat-in.index')->with('success', 'Dokumen berhasil diupdate');
+        return redirect()->route('doc-olahraga-in.index')->with('success', 'Dokumen berhasil diupdate');
     }
     /* End of Controller for Document In Management (Update) */
 
