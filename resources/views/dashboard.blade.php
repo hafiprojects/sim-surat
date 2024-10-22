@@ -26,7 +26,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>50</h3>
+                    <h3>{{ $DocumentInCount }}</h3>
 
                     <p>Surat Masuk</p>
                 </div>
@@ -41,7 +41,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>100</h3>
+                    <h3>{{ $DocumentOutCount }}</h3>
 
                     <p>Surat Keluar</p>
                 </div>
@@ -56,7 +56,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>5</h3>
+                    <h3>{{ $DocumentTypeCount }}</h3>
 
                     <p>Jenis Surat</p>
                 </div>
@@ -71,7 +71,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>3</h3>
+                    <h3>{{ $usersCount }}</h3>
 
                     <p>Pengguna Sistem</p>
                 </div>
