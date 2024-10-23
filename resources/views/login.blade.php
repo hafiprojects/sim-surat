@@ -17,13 +17,22 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <style>
+        .bg-login {
+            background-image: url('dist/img/background-login.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page bg-login">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
+                <img src="{{ asset('dist/img/logo.png') }}" alt="AdminLTE Logo"
+                    style="width: 150px; height: 150px; margin-bottom: 10px;">
                 <h1><b>ARSIP SURAT</h1>
             </div>
             <div class="card-body">
