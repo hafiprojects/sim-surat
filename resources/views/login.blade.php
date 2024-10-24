@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <style>
         .bg-login {
-            background-image: url('dist/img/background-login.png');
+            background-image: url('dist/img/background-login2.png');
             background-repeat: no-repeat;
             background-size: cover;
         }
