@@ -20,7 +20,7 @@ class DocumentIn extends Model
 
     public function documentType()
     {
-        return $this->belongsTo(DocumentType::class);
+        return $this->belongsTo(DocumentType::class)->withTrashed();
     }
 
     public function createdByUser()
