@@ -139,7 +139,7 @@
                 <div class="modal-body">
                     Apakah Anda yakin ingin menghapus jenis surat ini? <br>
                     Peringatan : <span style="color: red"> Data yang dihapus tidak dapat dipulihkan dan dapat menyebabkan
-                        masalah serius pada sistem jika jenis surat ini masih digunakan. </span>
+                        error pada sistem jika jenis surat tersebut sedang digunakan. </span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
