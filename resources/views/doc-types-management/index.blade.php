@@ -54,6 +54,7 @@
                                     data-target="#editDocumentTypeModal">
                                     <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                                 </a>
+                                &nbsp;
                                 <button type="button" class="btn btn-sm btn-danger delete-btn"
                                     data-url="{{ route('doc-types-management.destroy', $doc->id) }}" data-toggle="modal"
                                     data-target="#deleteDocumentTypeModal">

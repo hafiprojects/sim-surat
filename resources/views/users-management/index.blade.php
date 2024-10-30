@@ -64,6 +64,7 @@
                                     class="btn btn-sm btn-warning">
                                     <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                                 </a>
+                                &nbsp;
                                 <button type="button"
                                     class="btn btn-sm @if ($user->is_active) btn-danger @else btn-success @endif toggle-btn"
                                     data-url="{{ route('users-management.disable', $user->hashid) }}">
@@ -73,6 +74,7 @@
                                         <i class="fas fa-unlock"></i>&nbsp;&nbsp;Aktifkan
                                     @endif
                                 </button>
+                                &nbsp;
                                 <button type="button" class="btn btn-sm btn-danger delete-btn"
                                     data-url="{{ route('users-management.destroy', $user->hashid) }}">
                                     <i class="fas fa-trash"></i>&nbsp;&nbsp;Hapus

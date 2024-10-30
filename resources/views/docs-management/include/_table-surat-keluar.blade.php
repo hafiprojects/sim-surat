@@ -23,9 +23,11 @@
                     <a href="{{ route($routingEndpointAlias[1], $doc->hashid) }}" class="btn btn-sm btn-info">
                         <i class="fas fa-eye"></i>&nbsp;&nbsp;Lihat
                     </a>
+                    &nbsp;
                     <a href="{{ route($routingEndpointAlias[0], $doc->hashid) }}" class="btn btn-sm btn-warning">
                         <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                     </a>
+                    &nbsp;
                     <button type="button" class="btn btn-sm btn-danger delete-btn"
                         data-url="{{ route($routingEndpointAlias[2], $doc->hashid) }}">
                         <i class="fas fa-trash"></i>&nbsp;&nbsp;Hapus

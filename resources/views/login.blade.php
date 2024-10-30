@@ -33,7 +33,7 @@
             <div class="card-header text-center">
                 <img src="{{ asset('dist/img/logo.png') }}" alt="AdminLTE Logo"
                     style="width: 150px; height: 150px; margin-bottom: 10px;">
-                <h1><b>ARSIP SURAT</h1>
+                <h1><b>ARSIP SURAT DISPORA</h1>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Login untuk memulai</p>
