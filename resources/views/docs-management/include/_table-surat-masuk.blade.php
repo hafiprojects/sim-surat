@@ -22,15 +22,15 @@
                 <td>{{ $doc->subject }}</td>
                 <td>{{ $doc->status }}</td>
                 <td>
-                    <a href="{{ route($routingEndpointAlias[1], $doc->hashid) }}" class="btn btn-sm btn-info">
+                    <a href="{{ route($routingEndpointAlias[1], $doc->hashid) }}" class="btn btn-sm btn-info mb-2">
                         <i class="fas fa-eye"></i>&nbsp;&nbsp;Lihat
                     </a>
                     &nbsp;
-                    <a href="{{ route($routingEndpointAlias[0], $doc->hashid) }}" class="btn btn-sm btn-warning">
+                    <a href="{{ route($routingEndpointAlias[0], $doc->hashid) }}" class="btn btn-sm btn-warning mb-2">
                         <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Edit
                     </a>
                     &nbsp;
-                    <button type="button" class="btn btn-sm btn-danger delete-btn"
+                    <button type="button" class="btn btn-sm btn-danger delete-btn mb-2"
                         data-url="{{ route($routingEndpointAlias[2], $doc->hashid) }}">
                         <i class="fas fa-trash"></i>&nbsp;&nbsp;Hapus
                     </button>
