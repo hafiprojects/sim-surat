@@ -1,0 +1,6 @@
+# Docker files
+docker/
+!docker/nginx/
+!docker/supervisor/
+!docker/php/
+!docker/entrypoint.sh
